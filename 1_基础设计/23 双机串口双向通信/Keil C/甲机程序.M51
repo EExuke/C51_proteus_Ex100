@@ -1,0 +1,174 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/07/2020  18:31:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text_¼×.obj TO ¼×»ú³ÌÐò
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text_¼×.obj (TEXT_¼×)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  ¼×»ú³ÌÐò (TEXT_¼×)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000BH     UNIT         ?DT?TEXT_¼×
+            IDATA   0013H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     07DAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0075H     UNIT         ?PR?MAIN?TEXT_¼×
+            CODE    0901H     0035H     UNIT         ?PR?SERIAL_INT?TEXT_¼×
+            CODE    0936H     0016H     UNIT         ?PR?_DELAY_MS?TEXT_¼×
+            CODE    094CH     0010H     UNIT         ?C_INITSEG
+            CODE    095CH     0008H     UNIT         ?PR?_PUTC_TO_SERIALPORT?TEXT_¼×
+
+
+
+OVERLAY MAP OF MODULE:   ¼×»ú³ÌÐò (TEXT_¼×)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT_¼×
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT_¼×
+  +--> ?PR?_DELAY_MS?TEXT_¼×
+  +--> ?PR?_PUTC_TO_SERIALPORT?TEXT_¼×
+
+
+
+SYMBOL TABLE OF MODULE:  ¼×»ú³ÌÐò (TEXT_¼×)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/07/2020  18:31:07  PAGE 2
+
+
+
+  -------         MODULE        TEXT_¼×
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  B:0090H.0       PUBLIC        LED1
+  B:0090H.3       PUBLIC        LED2
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:088CH         PUBLIC        main
+  C:0901H         PUBLIC        Serial_INT
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0008H         PUBLIC        Operation_NO
+  D:0089H         PUBLIC        TMOD
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  C:0936H         PUBLIC        _delay_ms
+  B:0088H.6       PUBLIC        TR1
+  D:0009H         PUBLIC        SEG_CODE
+  C:095CH         PUBLIC        _putc_to_SerialPort
+  B:0090H.7       PUBLIC        K1
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0936H         LINE#         21
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _PUTC_TO_SERIALPORT
+  D:0007H         SYMBOL        c
+  C:095CH         LINE#         25
+  C:095CH         LINE#         26
+  C:095CH         LINE#         27
+  C:095EH         LINE#         28
+  C:0961H         LINE#         29
+  C:0963H         LINE#         30
+  -------         ENDPROC       _PUTC_TO_SERIALPORT
+  -------         PROC          MAIN
+  C:088CH         LINE#         35
+  C:088CH         LINE#         36
+  C:088CH         LINE#         37
+  C:0890H         LINE#         38
+  C:0893H         LINE#         39
+  C:0896H         LINE#         40
+  C:0899H         LINE#         41
+  C:089CH         LINE#         42
+  C:089FH         LINE#         43
+  C:08A2H         LINE#         44
+  C:08A6H         LINE#         45
+  C:08A8H         LINE#         46
+  C:08AAH         LINE#         47
+  C:08ACH         LINE#         48
+  C:08ACH         LINE#         49
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/07/2020  18:31:07  PAGE 3
+
+
+  C:08ACH         LINE#         51
+  C:08AFH         LINE#         52
+  C:08AFH         LINE#         53
+  C:08B6H         LINE#         54
+  C:08B9H         LINE#         55
+  C:08BCH         LINE#         57
+  C:08BCH         LINE#         58
+  C:08C3H         LINE#         59
+  C:08C6H         LINE#         61
+  C:08D5H         LINE#         62
+  C:08D5H         LINE#         63
+  C:08D5H         LINE#         64
+  C:08DAH         LINE#         65
+  C:08DCH         LINE#         66
+  C:08DEH         LINE#         67
+  C:08E0H         LINE#         68
+  C:08E0H         LINE#         69
+  C:08E5H         LINE#         70
+  C:08E7H         LINE#         71
+  C:08E9H         LINE#         72
+  C:08EBH         LINE#         73
+  C:08EBH         LINE#         74
+  C:08F0H         LINE#         75
+  C:08F2H         LINE#         76
+  C:08F4H         LINE#         77
+  C:08F6H         LINE#         78
+  C:08F6H         LINE#         79
+  C:08FBH         LINE#         80
+  C:08FDH         LINE#         81
+  C:08FFH         LINE#         82
+  -------         ENDPROC       MAIN
+  -------         PROC          SERIAL_INT
+  C:0901H         LINE#         91
+  C:090CH         LINE#         93
+  C:090FH         LINE#         94
+  C:090FH         LINE#         95
+  C:0911H         LINE#         96
+  C:091FH         LINE#         97
+  C:092AH         LINE#         99
+  C:092DH         LINE#         100
+  C:092DH         LINE#         101
+  -------         ENDPROC       SERIAL_INT
+  -------         ENDMOD        TEXT_¼×
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00DAH BYTE (10%) *
+******************************************************************************
+
+Program Size: data=20.0 xdata=0 code=362
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

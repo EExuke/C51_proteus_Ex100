@@ -1,0 +1,168 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/04/2020  20:46:46  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 串行共阴显示驱动器MAX7219控制4+2+2集成式数码管显示
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  串行共阴显示驱动器MAX7219控制4+2+2集成式数码管显示 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0051H     UNIT         ?PR?MAIN?TEXT1
+            CODE    0851H     0036H     UNIT         ?PR?_WRITE?TEXT1
+            CODE    0887H     0028H     UNIT         ?PR?_INIT_MAX72XX?TEXT1
+            CODE    08AFH     0024H     UNIT         ?CO?TEXT1
+            CODE    08D3H     001DH     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    08F0H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   串行共阴显示驱动器MAX7219控制4+2+2集成式数码管显示 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+
+?PR?MAIN?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+  +--> ?CO?TEXT1
+  +--> ?PR?_WRITE?TEXT1
+
+?PR?_DELAY_MS?TEXT1
+  +--> ?PR?_INIT_MAX72XX?TEXT1
+
+?PR?_INIT_MAX72XX?TEXT1
+  +--> ?PR?_WRITE?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  串行共阴显示驱动器MAX7219控制4+2+2集成式数码管显示 (TEXT1)
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/04/2020  20:46:46  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:08C3H         PUBLIC        Disp_Buffer0
+  C:08CBH         PUBLIC        Disp_Buffer1
+  D:00A0H         PUBLIC        P2
+  C:0851H         PUBLIC        _Write
+  B:00D0H.7       PUBLIC        CY
+  C:0800H         PUBLIC        main
+  C:08DAH         PUBLIC        _delay_ms
+  B:00A0H.2       PUBLIC        CLK
+  B:00A0H.0       PUBLIC        DIN
+  B:00A0H.1       PUBLIC        CS7221
+  B:00A0H.3       PUBLIC        CS7219
+  C:08AFH         PUBLIC        SEGCODE_72XX
+  C:0887H         PUBLIC        _Init_MAX72XX
+  -------         PROC          L?0035
+  -------         ENDPROC       L?0035
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:08DAH         LINE#         35
+  C:08DAH         LINE#         36
+  C:08DAH         LINE#         37
+  C:08EFH         LINE#         38
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _WRITE
+  D:0007H         SYMBOL        addr
+  D:0005H         SYMBOL        dat
+  D:0003H         SYMBOL        Chip_No
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0851H         LINE#         43
+  C:0851H         LINE#         44
+  C:0851H         LINE#         47
+  C:0854H         LINE#         48
+  C:0858H         LINE#         50
+  C:085AH         LINE#         52
+  C:085CH         LINE#         53
+  C:085CH         LINE#         54
+  C:085EH         LINE#         55
+  C:0862H         LINE#         56
+  C:0864H         LINE#         57
+  C:0866H         LINE#         58
+  C:0868H         LINE#         59
+  C:086CH         LINE#         61
+  C:086EH         LINE#         62
+  C:086EH         LINE#         63
+  C:0870H         LINE#         64
+  C:0874H         LINE#         65
+  C:0876H         LINE#         66
+  C:0878H         LINE#         67
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/04/2020  20:46:46  PAGE 3
+
+
+  C:087AH         LINE#         68
+  C:087EH         LINE#         70
+  C:0881H         LINE#         71
+  C:0884H         LINE#         73
+  C:0886H         LINE#         74
+  -------         ENDPROC       _WRITE
+  -------         PROC          _INIT_MAX72XX
+  D:0004H         SYMBOL        i
+  C:0887H         LINE#         79
+  C:0889H         LINE#         80
+  C:0889H         LINE#         82
+  C:088EH         LINE#         83
+  C:0891H         LINE#         85
+  C:0898H         LINE#         86
+  C:08A1H         LINE#         87
+  C:08A8H         LINE#         88
+  -------         ENDPROC       _INIT_MAX72XX
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         94
+  C:0800H         LINE#         95
+  C:0800H         LINE#         97
+  C:0805H         LINE#         98
+  C:080AH         LINE#         101
+  C:080CH         LINE#         102
+  C:080CH         LINE#         103
+  C:0810H         LINE#         104
+  C:081FH         LINE#         106
+  C:0830H         LINE#         107
+  C:0834H         LINE#         108
+  C:083BH         LINE#         111
+  C:083DH         LINE#         112
+  C:084FH         LINE#         113
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00F0H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=255
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

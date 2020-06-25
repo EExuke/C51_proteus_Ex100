@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\99702\Desktop\C51+proteus仿真100例\[练习]单片机C实训100例—基于8051+Proteus仿真\第 01 篇 基础部分\1.6.1 双机串口双向通信\Keil C\乙机程序.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Text_乙.c...
+linking...
+Program Size: data=10.0 xdata=0 code=296
+creating hex file from "乙机程序"...
+"乙机程序" - 0 Error(s), 0 Warning(s).

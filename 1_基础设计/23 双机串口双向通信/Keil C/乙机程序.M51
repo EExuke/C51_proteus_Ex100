@@ -1,0 +1,151 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/07/2020  18:46:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text_乙.obj TO 乙机程序
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text_乙.obj (TEXT___)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  乙机程序 (TEXT___)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?TEXT___
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     07DAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0040H     UNIT         ?PR?MAIN?TEXT___
+            CODE    08CCH     003CH     UNIT         ?PR?SERIAL_INT?TEXT___
+            CODE    0908H     0016H     UNIT         ?PR?_DELAY_MS?TEXT___
+            CODE    091EH     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   乙机程序 (TEXT___)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT___
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT___
+  +--> ?PR?_DELAY_MS?TEXT___
+
+
+
+SYMBOL TABLE OF MODULE:  乙机程序 (TEXT___)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT___
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/07/2020  18:46:32  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:0090H.0       PUBLIC        LED1
+  B:0090H.3       PUBLIC        LED2
+  D:0008H         PUBLIC        NumX
+  D:00A8H         PUBLIC        IE
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:088CH         PUBLIC        main
+  C:08CCH         PUBLIC        Serial_INT
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  C:0908H         PUBLIC        _delay_ms
+  B:0088H.6       PUBLIC        TR1
+  B:0090H.7       PUBLIC        K1
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0908H         LINE#         18
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  C:088CH         LINE#         22
+  C:088CH         LINE#         23
+  C:088CH         LINE#         24
+  C:0890H         LINE#         25
+  C:0893H         LINE#         26
+  C:0896H         LINE#         27
+  C:0899H         LINE#         28
+  C:089CH         LINE#         29
+  C:089FH         LINE#         30
+  C:08A3H         LINE#         31
+  C:08A5H         LINE#         32
+  C:08A8H         LINE#         33
+  C:08A8H         LINE#         34
+  C:08A8H         LINE#         35
+  C:08ABH         LINE#         36
+  C:08ABH         LINE#         37
+  C:08B2H         LINE#         38
+  C:08B5H         LINE#         39
+  C:08B8H         LINE#         41
+  C:08B8H         LINE#         42
+  C:08BFH         LINE#         43
+  C:08C2H         LINE#         44
+  C:08C5H         LINE#         45
+  C:08C8H         LINE#         46
+  C:08CAH         LINE#         47
+  C:08CAH         LINE#         48
+  -------         ENDPROC       MAIN
+  -------         PROC          SERIAL_INT
+  C:08CCH         LINE#         54
+  C:08D5H         LINE#         56
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/07/2020  18:46:32  PAGE 3
+
+
+  C:08D8H         LINE#         57
+  C:08D8H         LINE#         58
+  C:08DAH         LINE#         59
+  C:08EBH         LINE#         60
+  C:08EBH         LINE#         61
+  C:08EBH         LINE#         62
+  C:08EFH         LINE#         63
+  C:08F1H         LINE#         64
+  C:08F1H         LINE#         65
+  C:08F5H         LINE#         66
+  C:08F7H         LINE#         67
+  C:08F7H         LINE#         68
+  C:08FBH         LINE#         69
+  C:08FDH         LINE#         70
+  C:08FDH         LINE#         71
+  C:0901H         LINE#         72
+  C:0901H         LINE#         73
+  C:0901H         LINE#         74
+  -------         ENDPROC       SERIAL_INT
+  -------         ENDMOD        TEXT___
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0098H BYTE ( 7%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=296
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

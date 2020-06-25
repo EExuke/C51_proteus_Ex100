@@ -1,0 +1,163 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  18:46:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 模拟时序控制串并转换器74HC164驱动多只数码管显示
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C?CILDOPTR)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  模拟时序控制串并转换器74HC164驱动多只数码管显示 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001AH     UNIT         ?DT?TEXT1
+            DATA    0022H     0005H     UNIT         _DATA_GROUP_
+            IDATA   0027H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     005DH     UNIT         ?PR?_DECOMPOSE?TEXT1
+            CODE    08E9H     0055H     UNIT         ?C?LIB_CODE
+            CODE    093EH     0034H     UNIT         ?PR?MAIN?TEXT1
+            CODE    0972H     001CH     UNIT         ?C_INITSEG
+            CODE    098EH     0015H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    09A3H     0011H     UNIT         ?PR?_SERIAL_OUTPUT?TEXT1
+
+
+
+OVERLAY MAP OF MODULE:   模拟时序控制串并转换器74HC164驱动多只数码管显示 (TEXT1)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1                   -----    -----
+  +--> ?PR?_DECOMPOSE?TEXT1
+  +--> ?PR?_SERIAL_OUTPUT?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+?PR?_DECOMPOSE?TEXT1             0022H    0005H
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  18:46:47  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  模拟时序控制串并转换器74HC164驱动多只数码管显示 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  B:00D0H.7       PUBLIC        CY
+  D:0008H         PUBLIC        Buf
+  C:088CH         PUBLIC        _Decompose
+  C:093EH         PUBLIC        main
+  D:000DH         PUBLIC        val
+  C:098EH         PUBLIC        _delay_ms
+  C:09A3H         PUBLIC        _Serial_Output
+  B:00B0H.4       PUBLIC        DAT
+  B:00B0H.7       PUBLIC        CLK
+  D:000FH         PUBLIC        SEG_CODE
+  D:001AH         PUBLIC        m
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:098EH         LINE#         25
+  C:098EH         LINE#         26
+  C:098EH         LINE#         27
+  C:09A2H         LINE#         28
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _DECOMPOSE
+  D:0022H         SYMBOL        x
+  D:0024H         SYMBOL        d
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:088CH         LINE#         33
+  C:0896H         LINE#         34
+  C:0896H         LINE#         36
+  C:0898H         LINE#         37
+  C:0898H         LINE#         38
+  C:08A7H         LINE#         39
+  C:08BBH         LINE#         40
+  C:08BBH         LINE#         41
+  C:08C5H         LINE#         42
+  C:08D5H         LINE#         43
+  C:08D7H         LINE#         44
+  C:08DBH         LINE#         45
+  -------         ENDPROC       _DECOMPOSE
+  -------         PROC          _SERIAL_OUTPUT
+  D:0007H         SYMBOL        d
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:09A3H         LINE#         51
+  C:09A3H         LINE#         52
+  C:09A3H         LINE#         54
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  18:46:47  PAGE 3
+
+
+  C:09A5H         LINE#         55
+  C:09A5H         LINE#         56
+  C:09A7H         LINE#         57
+  C:09ABH         LINE#         58
+  C:09ADH         LINE#         59
+  C:09AFH         LINE#         60
+  C:09B3H         LINE#         61
+  -------         ENDPROC       _SERIAL_OUTPUT
+  -------         PROC          MAIN
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:093EH         LINE#         66
+  C:093EH         LINE#         67
+  C:093EH         LINE#         69
+  C:093EH         LINE#         70
+  C:093EH         LINE#         71
+  C:094BH         LINE#         72
+  C:0951H         LINE#         73
+  C:0961H         LINE#         74
+  C:0968H         LINE#         75
+  C:0970H         LINE#         76
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+  -------         MODULE        ?C?CILDOPTR
+  C:08E9H         PUBLIC        ?C?CILDOPTR
+  -------         ENDMOD        ?C?CILDOPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:091CH         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00D2H BYTE (10%) *
+******************************************************************************
+
+Program Size: data=40.0 xdata=0 code=439
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

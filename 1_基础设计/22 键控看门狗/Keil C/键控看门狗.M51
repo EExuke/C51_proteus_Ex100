@@ -1,0 +1,145 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/07/2020  12:50:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO ¼ü¿Ø¿´ÃÅ¹· RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  ¼ü¿Ø¿´ÃÅ¹· (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     0033H     UNIT         ?PR?MAIN?TEXT1
+            CODE    0833H     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    0849H     000DH     UNIT         ?PR?TIMER0_ISR?TEXT1
+            CODE    0856H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0862H     0003H     UNIT         ?PR?INT0_ISR?TEXT1
+
+
+
+OVERLAY MAP OF MODULE:   ¼ü¿Ø¿´ÃÅ¹· (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+
+?PR?MAIN?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  ¼ü¿Ø¿´ÃÅ¹· (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/07/2020  12:50:02  PAGE 2
+
+
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0849H         PUBLIC        TIMER0_ISR
+  D:00B0H         PUBLIC        P3
+  B:0080H.0       PUBLIC        LED1
+  B:0080H.5       PUBLIC        LED2
+  D:00A8H         PUBLIC        IE
+  D:00D8H         PUBLIC        CCON
+  C:0800H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  B:0088H.0       PUBLIC        IT0
+  D:008AH         PUBLIC        TL0
+  C:0833H         PUBLIC        _delay_ms
+  B:0088H.4       PUBLIC        TR0
+  D:00A7H         PUBLIC        WDTPRG
+  D:00B8H         PUBLIC        IPL
+  D:00C8H         PUBLIC        T2CON
+  D:00A6H         PUBLIC        WDTRST
+  C:0862H         PUBLIC        INT0_ISR
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0833H         LINE#         30
+  C:0833H         LINE#         31
+  C:0833H         LINE#         32
+  C:0848H         LINE#         33
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  C:0800H         LINE#         38
+  C:0800H         LINE#         39
+  C:0800H         LINE#         40
+  C:0803H         LINE#         41
+  C:0805H         LINE#         42
+  C:0807H         LINE#         43
+  C:080EH         LINE#         44
+  C:0811H         LINE#         45
+  C:0814H         LINE#         46
+  C:0817H         LINE#         47
+  C:0819H         LINE#         48
+  C:081BH         LINE#         49
+  C:081EH         LINE#         50
+  C:0821H         LINE#         51
+  C:0824H         LINE#         52
+  C:0824H         LINE#         53
+  C:0824H         LINE#         54
+  C:0826H         LINE#         55
+  C:0828H         LINE#         56
+  C:082AH         LINE#         57
+  C:0831H         LINE#         58
+  -------         ENDPROC       MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/07/2020  12:50:02  PAGE 3
+
+
+  -------         PROC          INT0_ISR
+  C:0862H         LINE#         64
+  C:0862H         LINE#         67
+  C:0864H         LINE#         69
+  -------         ENDPROC       INT0_ISR
+  -------         PROC          TIMER0_ISR
+  C:0849H         LINE#         74
+  C:0849H         LINE#         76
+  C:084CH         LINE#         77
+  C:084FH         LINE#         78
+  C:0852H         LINE#         79
+  C:0855H         LINE#         80
+  -------         ENDPROC       TIMER0_ISR
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 005FH BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=110
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

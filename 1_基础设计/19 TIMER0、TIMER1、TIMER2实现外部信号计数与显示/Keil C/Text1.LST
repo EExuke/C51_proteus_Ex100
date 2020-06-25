@@ -1,0 +1,81 @@
+C51 COMPILER V9.02   TEXT1                                                                 01/30/2020 18:08:55 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE TEXT1
+OBJECT MODULE PLACED IN Text1.OBJ
+COMPILER INVOKED BY: C:\Users\99702\Documents\keil\C51\BIN\C51.EXE Text1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //-----------------------------------------------------------------
+   2          //      名称: TIMER0、TIMER1、TIMER2实现外部信号计数与显示
+   3          //-----------------------------------------------------------------
+   4          //      说明: T0,T1均工作于计数器方式,T2工作于16位自动重装方式.
+   5          //        均实现了对外部输入信号的计数功能.
+   6          //        计数值最大均为65535,即0xFFFF.
+   7          //                      
+   8          //-----------------------------------------------------------------
+   9          #include <reg52.h>
+  10          sfr T2MOD = 0xC9;       //reg52.h头文件中未定义，故此处单独添加sfr定义
+  11          sbit SW1 = P1^5;
+  12          sbit SW2 = P1^6;
+  13          sbit SW3 = P1^7;
+  14          //-----------------------------------------------------------------
+  15          // 主程序
+  16          //-----------------------------------------------------------------
+  17          void main() 
+  18          { 
+  19   1              TMOD = 0x55;            //设置T/C0，T/C1为计数器，工作于方式1（16位）
+  20   1              T2MOD = 0x00;           //设置T2引脚计数时钟输入为，默认为递增计数
+  21   1              C_T2 = 1;                       //设置TIMER2为计数器
+  22   1              /* T2工作于自动重装模式（上溢时重装0x0000） */
+  23   1              RCAP2H = 0x00;          
+  24   1              RCAP2L = 0x00;
+  25   1              /* 三者初值均为0x0000 */
+  26   1              TH0 = 0x00;
+  27   1              TL0 = 0x00; 
+  28   1              TH1     = 0x00;
+  29   1              TL1 = 0x00;
+  30   1              TH2 = 0x00;
+  31   1              TL2 = 0x00;
+  32   1              /* 启动三个定时/计数器 */
+  33   1              TR0 = 1; 
+  34   1              TR1 = 1;
+  35   1              TR2 = 1;
+  36   1              while(1)
+  37   1              {
+  38   2                      if (!SW1)                       //通过P2，P0端口显示T0二进制计数值
+  39   2                      {
+  40   3                              P2 = ~TH0;
+  41   3                              P0 = ~TL0;
+  42   3                      }
+  43   2                      else if (!SW2)          //通过P2，P0端口显示T1二进制计数值
+  44   2                      {
+  45   3                              P2 = ~TH1;
+  46   3                              P0 = ~TL1;
+  47   3                      }
+  48   2                      else if (!SW3)          //通过P2，P0端口显示T2二进制计数值
+  49   2                      {
+  50   3                              P2 = ~TH2;
+  51   3                              P0 = ~TL2;
+  52   3                      }
+  53   2              }
+  54   1      }
+  55          
+C51 COMPILER V9.02   TEXT1                                                                 01/30/2020 18:08:55 PAGE 2   
+
+  56          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

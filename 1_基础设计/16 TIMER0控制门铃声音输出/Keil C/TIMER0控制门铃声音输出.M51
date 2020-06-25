@@ -1,0 +1,139 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/11/2019  22:10:44  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO TIMER0øÿ÷∆√≈¡Â…˘“Ù ‰≥ˆ
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  TIMER0øÿ÷∆√≈¡Â…˘“Ù ‰≥ˆ (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?TEXT1
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     003FH     UNIT         ?PR?TIMER0_ISR?TEXT1
+            CODE    08CBH     0020H     UNIT         ?PR?MAIN?TEXT1
+            CODE    08EBH     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    0901H     0005H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   TIMER0øÿ÷∆√≈¡Â…˘“Ù ‰≥ˆ (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  TIMER0øÿ÷∆√≈¡Â…˘“Ù ‰≥ˆ (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/11/2019  22:10:44  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:088CH         PUBLIC        Timer0_ISR
+  D:00A8H         PUBLIC        IE
+  B:00B0H.0       PUBLIC        DoorBell
+  C:08CBH         PUBLIC        main
+  B:0090H.7       PUBLIC        Key
+  D:0089H         PUBLIC        TMOD
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:08EBH         PUBLIC        _delay_ms
+  B:0088H.4       PUBLIC        TR0
+  D:0008H         PUBLIC        p
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:08EBH         LINE#         17
+  C:08EBH         LINE#         18
+  C:08EBH         LINE#         19
+  C:0900H         LINE#         20
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          TIMER0_ISR
+  C:088CH         LINE#         25
+  C:0890H         LINE#         27
+  C:0892H         LINE#         28
+  C:089AH         LINE#         31
+  C:08A3H         LINE#         32
+  C:08A3H         LINE#         33
+  C:08A6H         LINE#         34
+  C:08A9H         LINE#         35
+  C:08ABH         LINE#         37
+  C:08B6H         LINE#         38
+  C:08B6H         LINE#         39
+  C:08B9H         LINE#         40
+  C:08BCH         LINE#         41
+  C:08BEH         LINE#         44
+  C:08BEH         LINE#         45
+  C:08C0H         LINE#         46
+  C:08C6H         LINE#         47
+  C:08C6H         LINE#         48
+  -------         ENDPROC       TIMER0_ISR
+  -------         PROC          MAIN
+  C:08CBH         LINE#         53
+  C:08CBH         LINE#         54
+  C:08CBH         LINE#         55
+  C:08CEH         LINE#         56
+  C:08D1H         LINE#         57
+  C:08D4H         LINE#         58
+  C:08D7H         LINE#         59
+  C:08D7H         LINE#         60
+  C:08D7H         LINE#         61
+  C:08DAH         LINE#         62
+  C:08DAH         LINE#         63
+  C:08E1H         LINE#         64
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/11/2019  22:10:44  PAGE 3
+
+
+  C:08E4H         LINE#         65
+  C:08E4H         LINE#         66
+  C:08E7H         LINE#         67
+  C:08E9H         LINE#         68
+  C:08E9H         LINE#         69
+  C:08E9H         LINE#         70
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 007CH BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=11.0 xdata=0 code=268
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,98 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  20:02:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 数码管BCD解码驱动器CD4511与DM7447应用
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  数码管BCD解码驱动器CD4511与DM7447应用 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0018H     UNIT         ?PR?MAIN?TEXT1
+            CODE    0818H     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    082EH     000CH     UNIT         ?C_C51STARTUP
+            CODE    083AH     0008H     UNIT         ?CO?TEXT1
+
+
+
+OVERLAY MAP OF MODULE:   数码管BCD解码驱动器CD4511与DM7447应用 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+
+?PR?MAIN?TEXT1
+  +--> ?CO?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  数码管BCD解码驱动器CD4511与DM7447应用 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0800H         PUBLIC        main
+  C:083AH         PUBLIC        BCD_CODE
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  20:02:52  PAGE 2
+
+
+  C:0818H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0818H         LINE#         17
+  C:0818H         LINE#         18
+  C:0818H         LINE#         19
+  C:082DH         LINE#         20
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         25
+  C:0800H         LINE#         26
+  C:0800H         LINE#         28
+  C:0800H         LINE#         29
+  C:0800H         LINE#         30
+  C:0802H         LINE#         31
+  C:0802H         LINE#         33
+  C:0804H         LINE#         35
+  C:080BH         LINE#         36
+  C:0812H         LINE#         37
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0036H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=69
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

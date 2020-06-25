@@ -1,0 +1,134 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/30/2020  17:34:56  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO TIMER1¿ØÖÆÒô½×ÑÝ×à
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  TIMER1¿ØÖÆÒô½×ÑÝ×à (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?TEXT1
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0018H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     07E2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0033H     UNIT         ?PR?MAIN?TEXT1
+            CODE    08BFH     001FH     UNIT         ?PR?T1_INT?TEXT1
+            CODE    08DEH     001EH     UNIT         ?CO?TEXT1
+            CODE    08FCH     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    0912H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   TIMER1¿ØÖÆÒô½×ÑÝ×à (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?T1_INT?TEXT1
+  +--> ?CO?TEXT1
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/30/2020  17:34:56  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  TIMER1¿ØÖÆÒô½×ÑÝ×à (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:088CH         PUBLIC        main
+  C:08DEH         PUBLIC        HI_LIST
+  D:0089H         PUBLIC        TMOD
+  C:08EDH         PUBLIC        LO_LIST
+  D:008DH         PUBLIC        TH1
+  C:08BFH         PUBLIC        T1_INT
+  D:008BH         PUBLIC        TL1
+  C:08FCH         PUBLIC        _delay_ms
+  B:0088H.6       PUBLIC        TR1
+  D:0008H         PUBLIC        i
+  B:00A0H.0       PUBLIC        SPK
+  B:00B0H.6       PUBLIC        K1
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:08FCH         LINE#         22
+  C:08FCH         LINE#         23
+  C:08FCH         LINE#         24
+  C:0911H         LINE#         25
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  C:088CH         LINE#         30
+  C:088CH         LINE#         31
+  C:088CH         LINE#         33
+  C:088FH         LINE#         34
+  C:0892H         LINE#         35
+  C:0892H         LINE#         36
+  C:0892H         LINE#         37
+  C:0895H         LINE#         38
+  C:0895H         LINE#         39
+  C:089CH         LINE#         40
+  C:089FH         LINE#         41
+  C:089FH         LINE#         42
+  C:08A9H         LINE#         43
+  C:08A9H         LINE#         45
+  C:08ABH         LINE#         46
+  C:08B2H         LINE#         48
+  C:08B4H         LINE#         49
+  C:08BBH         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         PROC          T1_INT
+  C:08BFH         LINE#         59
+  C:08C5H         LINE#         61
+  C:08C7H         LINE#         62
+  C:08CFH         LINE#         63
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/30/2020  17:34:56  PAGE 3
+
+
+  C:08D7H         LINE#         64
+  -------         ENDPROC       T1_INT
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008CH BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=284
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

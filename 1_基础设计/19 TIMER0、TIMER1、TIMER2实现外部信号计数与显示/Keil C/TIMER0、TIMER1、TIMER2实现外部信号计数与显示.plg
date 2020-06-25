@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\99702\Desktop\C51+proteus仿真100例\[练习]单片机C实训100例—基于8051+Proteus仿真\第 01 篇 基础部分\1.5.2 TIMER0、TIMER1、TIMER2实现外部信号计数与显示\Keil C\TIMER0、TIMER1、TIMER2实现外部信号计数与显示.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Text1.c...
+linking...
+Program Size: data=9.0 xdata=0 code=87
+creating hex file from "TIMER0、TIMER1、TIMER2实现外部信号计数与显示"...
+"TIMER0、TIMER1、TIMER2实现外部信号计数与显示" - 0 Error(s), 0 Warning(s).

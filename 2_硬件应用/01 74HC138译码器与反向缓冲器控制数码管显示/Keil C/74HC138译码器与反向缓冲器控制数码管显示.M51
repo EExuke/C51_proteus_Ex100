@@ -1,0 +1,104 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/22/2020  21:30:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 74HC138译码器与反向缓冲器控制数码管显示
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  74HC138译码器与反向缓冲器控制数码管显示 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?TEXT1
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     001FH     UNIT         ?PR?MAIN?TEXT1
+            CODE    08ABH     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    08C1H     000BH     UNIT         ?C_INITSEG
+            CODE    08CCH     000AH     UNIT         ?CO?TEXT1
+
+
+
+OVERLAY MAP OF MODULE:   74HC138译码器与反向缓冲器控制数码管显示 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1
+  +--> ?CO?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  74HC138译码器与反向缓冲器控制数码管显示 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/22/2020  21:30:20  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:088CH         PUBLIC        main
+  D:0008H         PUBLIC        disp_buff
+  C:08ABH         PUBLIC        _delay_ms
+  C:08CCH         PUBLIC        SEG_CODE
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:08ABH         LINE#         19
+  C:08ABH         LINE#         20
+  C:08ABH         LINE#         21
+  C:08C0H         LINE#         22
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:088CH         LINE#         27
+  C:088CH         LINE#         28
+  C:088CH         LINE#         30
+  C:088CH         LINE#         31
+  C:088CH         LINE#         32
+  C:088EH         LINE#         33
+  C:088EH         LINE#         34
+  C:0891H         LINE#         35
+  C:0893H         LINE#         36
+  C:089EH         LINE#         37
+  C:08A5H         LINE#         38
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0049H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=17.0 xdata=0 code=217
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,117 @@
+C51 COMPILER V9.02   TEXT1                                                                 04/12/2020 20:20:26 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE TEXT1
+OBJECT MODULE PLACED IN Text1.OBJ
+COMPILER INVOKED BY: C:\Users\99702\Documents\keil\C51\BIN\C51.EXE Text1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //-----------------------------------------------------------------
+   2          //  名称: 用8255实现接口扩展
+   3          //-----------------------------------------------------------------
+   4          //  说明: 8255的PA、PB端口分别连接8位数码管的段码和位码,
+   5          //               程序控制数码管滚动显示一串数字.
+   6          //
+   7          //-----------------------------------------------------------------
+   8          #include <reg51.h>
+   9          #include <absacc.h>
+  10          #define INT8U  unsigned char
+  11          #define INT16U unsigned int 
+  12          //PA,PB,PC端口及命令端口地址定义
+  13          #define PA      XBYTE[0x0000]  
+  14          #define PB      XBYTE[0x0001] 
+  15          #define PC      XBYTE[0x0002] 
+  16          #define COM  XBYTE[0x0003]
+  17          //上述定义也可写成:
+  18          //#define PA    *(XBYTE + 0x0000)
+  19          //#define PB    *(XBYTE + 0x0001)
+  20          //#define PC    *(XBYTE + 0x0002)
+  21          //#define COM  *(XBYTE + 0x0003) 
+  22          //0-9的共阳数码管段码表,最后的0xBF表示"-"
+  23          code INT8U SEG_CODE[] =
+  24          { 0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xBF };
+  25          //待显示信息缓冲12-39-59
+  26          INT8U Disp_Buf[] = {1,2,10,3,9,10,5,9};
+  27          //-----------------------------------------------------------------
+  28          // 延时函数
+  29          //-----------------------------------------------------------------
+  30          void delay_ms(INT16U x) 
+  31          {
+  32   1              INT8U t; while(x--) for(t = 0; t < 120; t++);
+  33   1      }
+  34          
+  35          //-----------------------------------------------------------------
+  36          // 8255PC端口按键处理
+  37          //-----------------------------------------------------------------
+  38          void Key_Process()
+  39          {
+  40   1              static INT8U Pre_Key_State = 0x00;      //上次按键状态（静态变量！）
+  41   1              INT8U Key_State,t;
+  42   1              Key_State = PC;                                  //读8255PC端口按键状态；
+  43   1              if(Key_State == Pre_Key_State)   //按键状态未改变则返回；
+  44   1                      return; 
+  45   1              Pre_Key_State = Key_State;              //保存当前按键状态；
+  46   1              switch (Key_State)
+  47   1              {
+  48   2                      case ~(1 << 0):                                    //K1:小时递增；
+  49   2                              t = Disp_Buf[0] * 10 + Disp_Buf[1];
+  50   2                              if( ++t == 24 )
+  51   2                                      t = 0;
+  52   2                              Disp_Buf[0] = t/10;
+  53   2                              Disp_Buf[1] = t%10;
+  54   2                              break;
+  55   2                      case ~(1 << 2):                                    //K2:分钟递增；
+C51 COMPILER V9.02   TEXT1                                                                 04/12/2020 20:20:26 PAGE 2   
+
+  56   2                              t = Disp_Buf[3] * 10 + Disp_Buf[4];
+  57   2                              if( ++t == 60 )
+  58   2                                      t = 0;
+  59   2                              Disp_Buf[3] = t/10;
+  60   2                              Disp_Buf[4] = t%10;
+  61   2                              break;
+  62   2                      case ~(1 << 4):                                    //K3：秒数递增；
+  63   2                              t = Disp_Buf[6] * 10 + Disp_Buf[7];
+  64   2                              if( ++t == 60 )
+  65   2                                      t = 0;
+  66   2                              Disp_Buf[6] = t/10;
+  67   2                              Disp_Buf[7] = t%10;
+  68   2                              break;
+  69   2                      default:
+  70   2                              break;
+  71   2              }
+  72   1      }
+  73          
+  74          //-----------------------------------------------------------------
+  75          // 主程序
+  76          //-----------------------------------------------------------------
+  77          void main() 
+  78          { 
+  79   1              INT8U i;
+  80   1              COM = 0x89;        //设置8255工作方式为 模式0（PA、PB输出，PC输入）
+  81   1              while(1)
+  82   1              {
+  83   2                      for(i=0;i<8;i++)                                        //8个数码管动态循环扫描显示；
+  84   2                      {
+  85   3                              PA = 0xFF;                                              //暂时关闭段位（黑屏）；
+  86   3                              PB = 1 << i;                                    //发送位码；
+  87   3                              PA = SEG_CODE[Disp_Buf[i]];             //发送段码；
+  88   3                              delay_ms(4);                                    //换位按时约4ms；
+  89   3                              Key_Process();                                  //按键处理；
+  90   3                      }
+  91   2              } 
+  92   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    221    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

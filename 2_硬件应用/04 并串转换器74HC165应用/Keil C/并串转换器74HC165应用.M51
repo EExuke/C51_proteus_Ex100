@@ -1,0 +1,114 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  19:13:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 并串转换器74HC165应用
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  并串转换器74HC165应用 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0023H     UNIT         ?PR?SERIAL_INPUT?TEXT1
+            CODE    0823H     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    0839H     0012H     UNIT         ?PR?MAIN?TEXT1
+            CODE    084BH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   并串转换器74HC165应用 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+
+?PR?MAIN?TEXT1
+  +--> ?PR?SERIAL_INPUT?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  并串转换器74HC165应用 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00B0H         PUBLIC        P3
+  C:0839H         PUBLIC        main
+  C:0823H         PUBLIC        _delay_ms
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  19:13:32  PAGE 2
+
+
+  C:0800H         PUBLIC        Serial_Input
+  B:00B0H.0       PUBLIC        DAT
+  B:00B0H.1       PUBLIC        CLK
+  B:00B0H.2       PUBLIC        SPL
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0823H         LINE#         23
+  C:0823H         LINE#         24
+  C:0823H         LINE#         25
+  C:0838H         LINE#         26
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          SERIAL_INPUT
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        d
+  -------         ENDDO         
+  C:0800H         LINE#         31
+  C:0800H         LINE#         32
+  C:0800H         LINE#         33
+  C:0803H         LINE#         34
+  C:080AH         LINE#         35
+  C:080AH         LINE#         36
+  C:080DH         LINE#         37
+  C:0813H         LINE#         38
+  C:0817H         LINE#         39
+  C:0820H         LINE#         40
+  C:0822H         LINE#         41
+  -------         ENDPROC       SERIAL_INPUT
+  -------         PROC          MAIN
+  C:0839H         LINE#         46
+  C:0839H         LINE#         47
+  C:0839H         LINE#         49
+  C:0839H         LINE#         50
+  C:0839H         LINE#         51
+  C:083BH         LINE#         52
+  C:083DH         LINE#         53
+  C:0842H         LINE#         54
+  C:0849H         LINE#         55
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004BH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=90
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

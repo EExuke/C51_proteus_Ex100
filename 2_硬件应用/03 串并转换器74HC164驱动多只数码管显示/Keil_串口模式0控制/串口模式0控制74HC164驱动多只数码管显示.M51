@@ -1,0 +1,171 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  18:31:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 串口模式0控制74HC164驱动多只数码管显示
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C?CILDOPTR)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  串口模式0控制74HC164驱动多只数码管显示 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001AH     UNIT         ?DT?TEXT1
+            DATA    0022H     0005H     UNIT         _DATA_GROUP_
+            IDATA   0027H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     005DH     UNIT         ?PR?_DECOMPOSE?TEXT1
+            CODE    08E9H     0055H     UNIT         ?C?LIB_CODE
+            CODE    093EH     0040H     UNIT         ?PR?MAIN?TEXT1
+            CODE    097EH     001EH     UNIT         ?PR?_INVERT?TEXT1
+            CODE    099CH     001CH     UNIT         ?C_INITSEG
+            CODE    09B8H     0015H     UNIT         ?PR?_DELAY_MS?TEXT1
+
+
+
+OVERLAY MAP OF MODULE:   串口模式0控制74HC164驱动多只数码管显示 (TEXT1)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1                 -----    -----
+  +--> ?PR?_DECOMPOSE?TEXT1
+  +--> ?PR?_INVERT?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+?PR?_DECOMPOSE?TEXT1           0022H    0005H
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  18:31:39  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  串口模式0控制74HC164驱动多只数码管显示 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:097EH         PUBLIC        _invert
+  B:00D0H.7       PUBLIC        CY
+  B:0098H.1       PUBLIC        TI
+  D:0008H         PUBLIC        Buf
+  C:088CH         PUBLIC        _Decompose
+  C:093EH         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:000DH         PUBLIC        val
+  C:09B8H         PUBLIC        _delay_ms
+  D:000FH         PUBLIC        SEG_CODE
+  D:001AH         PUBLIC        m
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:09B8H         LINE#         22
+  C:09B8H         LINE#         23
+  C:09B8H         LINE#         24
+  C:09CCH         LINE#         25
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _DECOMPOSE
+  D:0022H         SYMBOL        x
+  D:0024H         SYMBOL        d
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:088CH         LINE#         30
+  C:0896H         LINE#         31
+  C:0896H         LINE#         33
+  C:0898H         LINE#         34
+  C:0898H         LINE#         35
+  C:08A7H         LINE#         36
+  C:08BBH         LINE#         37
+  C:08BBH         LINE#         38
+  C:08C5H         LINE#         39
+  C:08D5H         LINE#         40
+  C:08D7H         LINE#         41
+  C:08DBH         LINE#         42
+  -------         ENDPROC       _DECOMPOSE
+  -------         PROC          _INVERT
+  D:0007H         SYMBOL        d
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0006H         SYMBOL        dat
+  -------         ENDDO         
+  C:097EH         LINE#         49
+  C:097EH         LINE#         50
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  18:31:39  PAGE 3
+
+
+  C:097EH         LINE#         51
+  C:0980H         LINE#         52
+  C:0981H         LINE#         53
+  C:0981H         LINE#         54
+  C:0985H         LINE#         55
+  C:0988H         LINE#         56
+  C:0995H         LINE#         57
+  C:0999H         LINE#         58
+  C:099BH         LINE#         59
+  -------         ENDPROC       _INVERT
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:093EH         LINE#         64
+  C:093EH         LINE#         65
+  C:093EH         LINE#         67
+  C:0941H         LINE#         68
+  C:0943H         LINE#         69
+  C:0943H         LINE#         70
+  C:0943H         LINE#         71
+  C:0950H         LINE#         72
+  C:0956H         LINE#         73
+  C:0956H         LINE#         74
+  C:0965H         LINE#         75
+  C:0968H         LINE#         76
+  C:096AH         LINE#         77
+  C:096DH         LINE#         78
+  C:0974H         LINE#         79
+  C:097CH         LINE#         80
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+  -------         MODULE        ?C?CILDOPTR
+  C:08E9H         PUBLIC        ?C?CILDOPTR
+  -------         ENDMOD        ?C?CILDOPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:091CH         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00EBH BYTE (11%) *
+******************************************************************************
+
+Program Size: data=40.0 xdata=0 code=464
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

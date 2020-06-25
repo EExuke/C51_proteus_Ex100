@@ -1,0 +1,126 @@
+C51 COMPILER V9.02   TEXT_甲                                                               02/07/2020 18:31:06 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE TEXT_甲
+OBJECT MODULE PLACED IN Text_甲.OBJ
+COMPILER INVOKED BY: C:\Users\99702\Documents\keil\C51\BIN\C51.EXE Text_甲.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //-----------------------------------------------------------------
+   2          //  名称: 甲机串口程序
+   3          //-----------------------------------------------------------------
+   4          //  说明: 甲单片机向乙单片机发送控制命令字符,甲机同时还可接收乙机
+   5          //              发送的数字,所接收的数字显示在数码管上.
+   6          //
+   7          //-----------------------------------------------------------------
+   8          #include <reg51.h>
+   9          #include <intrins.h>
+  10          #define INT8U  unsigned char
+  11          #define INT16U unsigned int
+  12          sbit LED1 = P1^0;
+  13          sbit LED2 = P1^3;
+  14          sbit K1 = P1^7;
+  15          INT8U Operation_NO = 0;                 //操作代码
+  16          const INT8U SEG_CODE[]=                 //共阳数码管段码
+  17          { 0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90 };
+  18          //-----------------------------------------------------------------
+  19          // 延时函数     
+  20          //-----------------------------------------------------------------
+  21          void delay_ms(INT16U x) {INT8U t; while(x--) for(t = 0; t<120; t++);}
+  22          //-----------------------------------------------------------------
+  23          // 向串口发送字符
+  24          //-----------------------------------------------------------------
+  25          void putc_to_SerialPort(INT8U c)
+  26          {
+  27   1              SBUF = c;
+  28   1              while(TI == 0);
+  29   1              TI = 0;
+  30   1      }
+  31          
+  32          //-----------------------------------------------------------------
+  33          // 主程序 
+  34          //-----------------------------------------------------------------
+  35          void main()
+  36          {  
+  37   1              LED1 = LED2 = 1;        //初始时关闭LED
+  38   1              P0 = 0xBF;                      //初始时共阳数码管显示“-”
+  39   1              SCON = 0x50;            //串口工作在方式1（0101 0000），允许接收
+  40   1              TMOD = 0x20;            //T1工作在模式2，8位自动装载
+  41   1              PCON = 0x00;            //波特率不倍增
+  42   1              TH1 = 0xFD;                     //设置波特率9600b/s
+  43   1              TL1 = 0xFD;                     
+  44   1              TI = RI = 0;            //发送与接收中断标志位软件清零
+  45   1              TR1 = 1;                        //启动定时器T1
+  46   1              ES = 1;                         //允许串口中断
+  47   1              EA = 1;                         //开总中断
+  48   1              while(1)
+  49   1              {                 
+  50   2                      //按下K1时选择操作代码：0,1,2,3
+  51   2                      if (K1 == 0)
+  52   2                      {
+  53   3                              delay_ms(10);
+  54   3                              if (K1 == 0)
+  55   3                                      while(K1 == 0);
+C51 COMPILER V9.02   TEXT_甲                                                               02/07/2020 18:31:06 PAGE 2   
+
+  56   3                              else
+  57   3                                      continue;
+  58   3                              if (++Operation_NO == 4)
+  59   3                                      Operation_NO = 0;
+  60   3                              //根据操作代码发送 X/A/B/C
+  61   3                              switch(Operation_NO)
+  62   3                              {
+  63   4                                      case 0:
+  64   4                                              putc_to_SerialPort('X');
+  65   4                                              LED1 = 1;
+  66   4                                              LED2 = 1;
+  67   4                                              break;
+  68   4                                      case 1:
+  69   4                                              putc_to_SerialPort('A');
+  70   4                                              LED1 = 0;
+  71   4                                              LED2 = 1;
+  72   4                                              break;
+  73   4                                      case 2:
+  74   4                                              putc_to_SerialPort('B');
+  75   4                                              LED1 = 1;
+  76   4                                              LED2 = 0;
+  77   4                                              break;
+  78   4                                      case 3:
+  79   4                                              putc_to_SerialPort('C');
+  80   4                                              LED1 = 0;
+  81   4                                              LED2 = 0;
+  82   4                                              break;
+  83   4                              }
+  84   3                      }
+  85   2              }
+  86   1      }
+  87          
+  88          //-----------------------------------------------------------------
+  89          // 甲机串口接收中断函数 
+  90          //-----------------------------------------------------------------
+  91          void Serial_INT() interrupt 4 
+  92          {
+  93   1              if (RI)            //接收到1字节
+  94   1              {
+  95   2                      RI = 0;    //清除串行接收中断标志位
+  96   2                      if (SBUF >= 0 && SBUF <= 9)
+  97   2                              P0 = SEG_CODE[SBUF];               //显示数字
+  98   2                      else
+  99   2                              P0 = 0xFF;
+ 100   2              }
+ 101   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    200    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

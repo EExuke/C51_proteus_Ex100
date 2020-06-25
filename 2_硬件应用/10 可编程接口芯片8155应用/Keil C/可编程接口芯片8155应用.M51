@@ -1,0 +1,220 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  20:46:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE main.obj TO 可编程接口芯片8155应用 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  可编程接口芯片8155应用 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0012H     UNIT         ?DT?MAIN
+            DATA    001AH     0002H     UNIT         _DATA_GROUP_
+            IDATA   001CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     07FAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     006BH     UNIT         ?PR?_ADJUST_TCOUNT?MAIN
+            CODE    08F7H     0055H     UNIT         ?C?LIB_CODE
+            CODE    094CH     0046H     UNIT         ?PR?MAIN?MAIN
+            CODE    0992H     003BH     UNIT         ?PR?KEY_PROCESS?MAIN
+            CODE    09CDH     0026H     UNIT         ?PR?EX_INT0?MAIN
+            CODE    09F3H     001BH     UNIT         ?C_INITSEG
+            CODE    0A0EH     0016H     UNIT         ?PR?_DELAY_MS?MAIN
+            CODE    0A24H     0012H     UNIT         ?PR?SET_8155_TC?MAIN
+            CODE    0A36H     000EH     UNIT         ?PR?SOUNDER?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   可编程接口芯片8155应用 (MAIN)
+
+
+SEGMENT                           DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH
+-----------------------------------------------
+?PR?EX_INT0?MAIN                -----    -----
+  +--> ?PR?SOUNDER?MAIN
+  +--> ?PR?SET_8155_TC?MAIN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                   -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  20:46:00  PAGE 2
+
+
+
+?PR?MAIN?MAIN                   -----    -----
+  +--> ?PR?_DELAY_MS?MAIN
+  +--> ?PR?KEY_PROCESS?MAIN
+
+?PR?KEY_PROCESS?MAIN            -----    -----
+  +--> ?PR?_ADJUST_TCOUNT?MAIN
+  +--> ?PR?SET_8155_TC?MAIN
+
+?PR?_ADJUST_TCOUNT?MAIN         001AH    0002H
+
+
+
+SYMBOL TABLE OF MODULE:  可编程接口芯片8155应用 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  C:09CDH         PUBLIC        EX_INT0
+  C:094CH         PUBLIC        main
+  B:0088H.0       PUBLIC        IT0
+  D:0009H         PUBLIC        Disp_Buffer
+  C:0A0EH         PUBLIC        _delay_ms
+  C:0A24H         PUBLIC        Set_8155_TC
+  D:000DH         PUBLIC        SEG_CODE
+  C:0A36H         PUBLIC        Sounder
+  C:0992H         PUBLIC        Key_Process
+  C:088CH         PUBLIC        _adjust_tCount
+  D:0018H         PUBLIC        cnt_8155
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0A0EH         LINE#         44
+  C:0A0EH         LINE#         45
+  C:0A0EH         LINE#         46
+  C:0A23H         LINE#         47
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          SOUNDER
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:0A36H         LINE#         52
+  C:0A36H         LINE#         53
+  C:0A36H         LINE#         55
+  C:0A43H         LINE#         56
+  -------         ENDPROC       SOUNDER
+  -------         PROC          SET_8155_TC
+  C:0A24H         LINE#         61
+  C:0A24H         LINE#         62
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  20:46:00  PAGE 3
+
+
+  C:0A24H         LINE#         63
+  C:0A2BH         LINE#         64
+  C:0A2FH         LINE#         65
+  C:0A35H         LINE#         66
+  -------         ENDPROC       SET_8155_TC
+  -------         PROC          _ADJUST_TCOUNT
+  D:0007H         SYMBOL        op
+  -------         DO            
+  D:0003H         SYMBOL        i
+  D:001AH         SYMBOL        cnt
+  -------         ENDDO         
+  C:088CH         LINE#         71
+  C:088CH         LINE#         72
+  C:088CH         LINE#         75
+  C:08A8H         LINE#         76
+  C:08B3H         LINE#         77
+  C:08BBH         LINE#         78
+  C:08C6H         LINE#         79
+  C:08CCH         LINE#         80
+  C:08D2H         LINE#         81
+  C:08D4H         LINE#         82
+  C:08D4H         LINE#         83
+  C:08E5H         LINE#         84
+  C:08F4H         LINE#         85
+  C:08F6H         LINE#         86
+  -------         ENDPROC       _ADJUST_TCOUNT
+  -------         PROC          KEY_PROCESS
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0008H         SYMBOL        Pre_Key_State
+  D:0007H         SYMBOL        curr_Key_State
+  -------         ENDDO         
+  C:0992H         LINE#         91
+  C:0992H         LINE#         92
+  C:0992H         LINE#         95
+  C:0999H         LINE#         96
+  C:099DH         LINE#         98
+  C:099FH         LINE#         99
+  C:09AFH         LINE#         100
+  C:09AFH         LINE#         101
+  C:09AFH         LINE#         102
+  C:09B3H         LINE#         103
+  C:09B3H         LINE#         104
+  C:09B8H         LINE#         105
+  C:09B8H         LINE#         106
+  C:09BBH         LINE#         107
+  C:09BBH         LINE#         108
+  C:09BDH         LINE#         109
+  C:09CCH         LINE#         110
+  C:09CCH         LINE#         111
+  C:09CCH         LINE#         112
+  -------         ENDPROC       KEY_PROCESS
+  -------         PROC          MAIN
+  -------         DO            
+  D:0001H         SYMBOL        i
+  -------         ENDDO         
+  C:094CH         LINE#         117
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  20:46:00  PAGE 4
+
+
+  C:094CH         LINE#         118
+  C:094CH         LINE#         120
+  C:094FH         LINE#         121
+  C:0951H         LINE#         123
+  C:0957H         LINE#         124
+  C:095AH         LINE#         125
+  C:095AH         LINE#         126
+  C:095AH         LINE#         127
+  C:095CH         LINE#         128
+  C:095CH         LINE#         129
+  C:0961H         LINE#         130
+  C:096EH         LINE#         131
+  C:0982H         LINE#         132
+  C:0989H         LINE#         133
+  C:098CH         LINE#         134
+  -------         ENDPROC       MAIN
+  -------         PROC          EX_INT0
+  C:09CDH         LINE#         141
+  C:09DCH         LINE#         143
+  C:09DEH         LINE#         144
+  C:09E1H         LINE#         145
+  C:09E4H         LINE#         146
+  C:09E6H         LINE#         147
+  -------         ENDPROC       EX_INT0
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?UIDIV
+  C:08F7H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0165H BYTE (17%) *
+******************************************************************************
+
+Program Size: data=29.0 xdata=0 code=586
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

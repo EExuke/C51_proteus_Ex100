@@ -1,0 +1,152 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  20:20:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 用8255实现接口扩展
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  用8255实现接口扩展 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0009H     UNIT         ?DT?TEXT1
+            DATA    0011H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008DH     UNIT         ?PR?KEY_PROCESS?TEXT1
+            CODE    088DH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0919H     003AH     UNIT         ?PR?MAIN?TEXT1
+            CODE    0953H     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    0969H     000EH     UNIT         ?C_INITSEG
+            CODE    0977H     000BH     UNIT         ?CO?TEXT1
+
+
+
+OVERLAY MAP OF MODULE:   用8255实现接口扩展 (TEXT1)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1                 -----    -----
+  +--> ?CO?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+  +--> ?PR?KEY_PROCESS?TEXT1
+
+?PR?KEY_PROCESS?TEXT1          0011H    0001H
+
+
+
+SYMBOL TABLE OF MODULE:  用8255实现接口扩展 (TEXT1)
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  20:20:26  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0009H         PUBLIC        Disp_Buf
+  C:0919H         PUBLIC        main
+  C:0953H         PUBLIC        _delay_ms
+  C:0977H         PUBLIC        SEG_CODE
+  C:0800H         PUBLIC        Key_Process
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        t
+  -------         ENDDO         
+  C:0953H         LINE#         30
+  C:0953H         LINE#         31
+  C:0953H         LINE#         32
+  C:0968H         LINE#         33
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          KEY_PROCESS
+  -------         DO            
+  D:0008H         SYMBOL        Pre_Key_State
+  D:0007H         SYMBOL        Key_State
+  D:0011H         SYMBOL        t
+  -------         ENDDO         
+  C:0800H         LINE#         38
+  C:0800H         LINE#         39
+  C:0800H         LINE#         42
+  C:0805H         LINE#         43
+  C:080CH         LINE#         45
+  C:080EH         LINE#         46
+  C:081BH         LINE#         47
+  C:081BH         LINE#         48
+  C:081BH         LINE#         49
+  C:0825H         LINE#         50
+  C:082CH         LINE#         51
+  C:082FH         LINE#         52
+  C:0837H         LINE#         53
+  C:0840H         LINE#         54
+  C:0841H         LINE#         55
+  C:0841H         LINE#         56
+  C:084BH         LINE#         57
+  C:0852H         LINE#         58
+  C:0855H         LINE#         59
+  C:085DH         LINE#         60
+  C:0866H         LINE#         61
+  C:0867H         LINE#         62
+  C:0867H         LINE#         63
+  C:0871H         LINE#         64
+  C:0878H         LINE#         65
+  C:087BH         LINE#         66
+  C:0883H         LINE#         67
+  C:088CH         LINE#         68
+  C:088CH         LINE#         69
+  C:088CH         LINE#         70
+  C:088CH         LINE#         71
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  20:20:26  PAGE 3
+
+
+  C:088CH         LINE#         72
+  -------         ENDPROC       KEY_PROCESS
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0919H         LINE#         77
+  C:0919H         LINE#         78
+  C:0919H         LINE#         80
+  C:091FH         LINE#         81
+  C:091FH         LINE#         82
+  C:091FH         LINE#         83
+  C:0921H         LINE#         84
+  C:0921H         LINE#         85
+  C:0927H         LINE#         86
+  C:0936H         LINE#         87
+  C:0943H         LINE#         88
+  C:094AH         LINE#         89
+  C:094DH         LINE#         90
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00F5H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=19.0 xdata=0 code=389
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

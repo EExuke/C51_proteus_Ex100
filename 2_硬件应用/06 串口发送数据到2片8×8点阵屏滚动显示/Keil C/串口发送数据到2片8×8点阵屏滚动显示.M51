@@ -1,0 +1,159 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/12/2020  19:55:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 串口发送数据到2片8×8点阵屏滚动显示
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (PUTCHAR)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  串口发送数据到2片8×8点阵屏滚动显示 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?TEXT1
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0082H     UNIT         ?PR?T0_LED_DISPLAY_CONTROL?TEXT1
+            CODE    090EH     0030H     UNIT         ?CO?TEXT1
+            CODE    093EH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    0965H     0026H     UNIT         ?PR?MAIN?TEXT1
+            CODE    098BH     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    09A1H     0007H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   串口发送数据到2片8×8点阵屏滚动显示 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?T0_LED_DISPLAY_CONTROL?TEXT1
+  +--> ?PR?PUTCHAR?PUTCHAR
+  +--> ?CO?TEXT1
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  19:55:12  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  串口发送数据到2片8×8点阵屏滚动显示 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  B:00B0H.2       PUBLIC        ST_CP
+  B:0098H.1       PUBLIC        TI
+  D:0009H         PUBLIC        Idx
+  C:0965H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:098BH         PUBLIC        _delay_ms
+  B:0088H.4       PUBLIC        TR0
+  C:090EH         PUBLIC        Arrow_Matrix
+  D:000AH         PUBLIC        Offset
+  C:088CH         PUBLIC        T0_Led_Display_Control
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:098BH         LINE#         27
+  C:098BH         LINE#         28
+  C:098BH         LINE#         29
+  C:09A0H         LINE#         30
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          T0_LED_DISPLAY_CONTROL
+  -------         DO            
+  D:0008H         SYMBOL        Scan_BIT
+  -------         ENDDO         
+  C:088CH         LINE#         35
+  C:08A9H         LINE#         38
+  C:08ACH         LINE#         39
+  C:08AFH         LINE#         40
+  C:08BCH         LINE#         41
+  C:08C0H         LINE#         42
+  C:08C3H         LINE#         43
+  C:08C3H         LINE#         45
+  C:08CFH         LINE#         46
+  C:08D2H         LINE#         47
+  C:08DEH         LINE#         48
+  C:08E1H         LINE#         49
+  C:08E3H         LINE#         50
+  C:08E5H         LINE#         51
+  C:08E7H         LINE#         52
+  C:08EEH         LINE#         53
+  C:08F1H         LINE#         54
+  C:08F3H         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/12/2020  19:55:12  PAGE 3
+
+
+  -------         ENDPROC       T0_LED_DISPLAY_CONTROL
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0965H         LINE#         60
+  C:0965H         LINE#         61
+  C:0965H         LINE#         63
+  C:0968H         LINE#         64
+  C:096BH         LINE#         65
+  C:096EH         LINE#         66
+  C:0971H         LINE#         67
+  C:0974H         LINE#         68
+  C:0976H         LINE#         69
+  C:0976H         LINE#         70
+  C:0976H         LINE#         71
+  C:0978H         LINE#         72
+  C:0978H         LINE#         73
+  C:097AH         LINE#         74
+  C:097CH         LINE#         77
+  C:0983H         LINE#         78
+  C:0985H         LINE#         79
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEXT1
+
+  -------         MODULE        PUTCHAR
+  C:093EH         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00F7H BYTE (12%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=430
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,151 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/30/2020  18:29:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO TTIMER0、TIMER1及INT0控制报警器与旋转灯 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  TTIMER0、TIMER1及INT0控制报警器与旋转灯 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?TEXT1
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     000DH                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     07E2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0027H     UNIT         ?PR?T1_INT?TEXT1
+            CODE    08B3H     0022H     UNIT         ?PR?MAIN?TEXT1
+            CODE    08D5H     0016H     UNIT         ?PR?_DELAYMS?TEXT1
+            CODE    08EBH     0015H     UNIT         ?PR?EX0_INT?TEXT1
+            CODE    0900H     0009H     UNIT         ?PR?T0_INT?TEXT1
+            CODE    0909H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   TTIMER0、TIMER1及INT0控制报警器与旋转灯 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1
+  +--> ?PR?_DELAYMS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  TTIMER0、TIMER1及INT0控制报警器与旋转灯 (TEXT1)
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/30/2020  18:29:35  PAGE 2
+
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:08EBH         PUBLIC        EX0_INT
+  C:08B3H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  D:008CH         PUBLIC        TH0
+  B:0088H.0       PUBLIC        IT0
+  D:008DH         PUBLIC        TH1
+  C:0900H         PUBLIC        T0_INT
+  D:008AH         PUBLIC        TL0
+  C:088CH         PUBLIC        T1_INT
+  D:008BH         PUBLIC        TL1
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  D:0008H         PUBLIC        FRQ
+  B:00B0H.7       PUBLIC        SPK
+  C:08D5H         PUBLIC        _delayms
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:08D5H         LINE#         16
+  C:08D5H         LINE#         17
+  C:08D5H         LINE#         18
+  C:08EAH         LINE#         19
+  -------         ENDPROC       _DELAYMS
+  -------         PROC          MAIN
+  C:08B3H         LINE#         24
+  C:08B3H         LINE#         25
+  C:08B3H         LINE#         26
+  C:08B6H         LINE#         27
+  C:08B9H         LINE#         28
+  C:08BCH         LINE#         29
+  C:08BEH         LINE#         30
+  C:08C0H         LINE#         31
+  C:08C3H         LINE#         32
+  C:08C6H         LINE#         33
+  C:08C8H         LINE#         34
+  C:08CAH         LINE#         35
+  C:08CAH         LINE#         36
+  C:08CAH         LINE#         37
+  C:08CCH         LINE#         38
+  C:08D3H         LINE#         39
+  -------         ENDPROC       MAIN
+  -------         PROC          EX0_INT
+  C:08EBH         LINE#         45
+  C:08EDH         LINE#         47
+  C:08EFH         LINE#         48
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/30/2020  18:29:35  PAGE 3
+
+
+  C:08F1H         LINE#         49
+  C:08F5H         LINE#         50
+  C:08FAH         LINE#         52
+  C:08FDH         LINE#         53
+  -------         ENDPROC       EX0_INT
+  -------         PROC          T0_INT
+  C:0900H         LINE#         58
+  C:0900H         LINE#         60
+  C:0903H         LINE#         61
+  C:0906H         LINE#         62
+  C:0908H         LINE#         63
+  -------         ENDPROC       T0_INT
+  -------         PROC          T1_INT
+  C:088CH         LINE#         68
+  C:0897H         LINE#         70
+  C:089AH         LINE#         71
+  C:089DH         LINE#         72
+  C:08AAH         LINE#         73
+  -------         ENDPROC       T1_INT
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0089H BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=281
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

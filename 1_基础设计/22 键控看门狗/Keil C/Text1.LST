@@ -1,0 +1,105 @@
+C51 COMPILER V9.02   TEXT1                                                                 02/07/2020 12:50:02 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE TEXT1
+OBJECT MODULE PLACED IN Text1.OBJ
+COMPILER INVOKED BY: C:\Users\99702\Documents\keil\C51\BIN\C51.EXE Text1.c DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //-----------------------------------------------------------------
+   2          //      名称: 键控看门狗
+   3          //-----------------------------------------------------------------
+   4          //      说明: 激活看门狗后喂狗,LED1点亮,LED2闪烁,如果不喂狗则复位,LED1闪烁.
+   5          //                      本例单片机内置看门狗,启动看门狗只需对0xA6地址(WDTRST)写入
+   6          //                      0x1E和0xE1,看门狗一旦启动将无法关闭,必需在16.3ms内重置,
+   7          //                      否则会引起系统复位.
+   8          //-----------------------------------------------------------------
+   9          #include "89c51rd2.h"
+  10          #include <intrins.h>
+  11          #define INT8U   unsigned char
+  12          #define INT16U unsigned int
+  13          sbit LED1 = P0^0;       //LED1
+  14          sbit LED2 = P0^5;       //LED2
+  15          /*
+  16          mode X1 12 clock periods per peripheral clock cycle.
+  17          mode X2 6 clock periods per peripheral clock cycle.
+  18          WDTPRG|=0x00 (2^14 - 1) machine cycles, 16. 3 ms        @ FOSCA=12 MHz
+  19          WDTPRG|=0x01 (2^15 - 1) machine cycles, 32.7 ms         @ FOSCA=12 MHz
+  20          WDTPRG|=0x02 (2^16 - 1) machine cycles, 65. 5 ms        @ FOSCA=12 MHz
+  21          WDTPRG|=0x03 (2^17 - 1) machine cycles, 131 ms          @ FOSCA=12 MHz
+  22          WDTPRG|=0x04 (2^18 - 1) machine cycles, 262 ms          @ FOSCA=12 MHz
+  23          WDTPRG|=0x05 (2^19 - 1) machine cycles, 542 ms          @ FOSCA=12 MHz
+  24          WDTPRG|=0x06 (2^20 - 1) machine cycles, 1.05 s          @ FOSCA=12 MHz
+  25          WDTPRG|=0x07 (2^21 - 1) machine cycles, 2.09 s          @ FOSCA=12 MHz
+  26          */
+  27          //-----------------------------------------------------------------
+  28          // 延时
+  29          //-----------------------------------------------------------------
+  30          void delay_ms(INT16U x) 
+  31          {
+  32   1              INT8U t; while(x--) for(t = 0; t < 120; t++);
+  33   1      }
+  34          
+  35          //-----------------------------------------------------------------
+  36          // 主程序        
+  37          //-----------------------------------------------------------------
+  38          void main()
+  39          {
+  40   1              WDTPRG = 0x00;   //看门狗编程：0x00；设S2，1，0 = 000 （16.3ms - 12MHZ）
+  41   1              LED1 = 0;                //启动时LED1点亮
+  42   1              LED2 = 1;
+  43   1              delay_ms(2000);
+  44   1              TMOD = 0x01;     //定时器模式1
+  45   1              TH0     = (-15000 / 256);               //15ms定时
+  46   1              TL0     = (-15000 % 256);
+  47   1              TR0 = 1;                //启动定时器
+  48   1              IT0 = 1;                //INT0下降沿触发
+  49   1              IE = 0x83;              //使能INT0，T0中断并开总中断
+  50   1              WDTRST = 0x1E;          //在程序初始化时激活WD
+  51   1              WDTRST = 0xE1;
+  52   1              while(1)
+  53   1              {
+  54   2                      ET0 = 1;                        //允许T0中断
+  55   2                      LED1 = 1;                       //正常运行，关闭LED1
+C51 COMPILER V9.02   TEXT1                                                                 02/07/2020 12:50:02 PAGE 2   
+
+  56   2                      LED2 = ~LED2;           //LED2闪烁
+  57   2                      delay_ms(200);
+  58   2              }
+  59   1      }
+  60          
+  61          //-----------------------------------------------------------------
+  62          // INT0中断程序
+  63          //-----------------------------------------------------------------
+  64          void INT0_ISR() interrupt 0
+  65          {
+  66   1              //用K1停止喂狗,观察系统是否重启,LED1是否又被点亮一次
+  67   1              ET0 = 0;                //T0定时器中断禁止，即停止喂狗
+  68   1      
+  69   1      }
+  70          
+  71          //-----------------------------------------------------------------
+  72          // 定时器0中断程序
+  73          //-----------------------------------------------------------------
+  74          void TIMER0_ISR() interrupt 1
+  75          {
+  76   1              TH0     = (-15000 / 256);               //重置15ms定时
+  77   1              TL0 = (-15000 % 256);
+  78   1              WDTRST = 0x1E;                  //喂狗指令（复位看门狗）
+  79   1              WDTRST = 0xE1;
+  80   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     89    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

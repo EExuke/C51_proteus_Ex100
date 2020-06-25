@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\99702\Desktop\C51+proteus仿真100例\[练习]单片机C实训100例—基于8051+Proteus仿真\第 02 篇 硬件应用\10 可编程接口芯片8155应用\Keil C\可编程接口芯片8155应用.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=29.0 xdata=0 code=586
+creating hex file from "可编程接口芯片8155应用"...
+"可编程接口芯片8155应用" - 0 Error(s), 0 Warning(s).

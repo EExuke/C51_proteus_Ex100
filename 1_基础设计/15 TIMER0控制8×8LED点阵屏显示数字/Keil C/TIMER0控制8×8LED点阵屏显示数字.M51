@@ -1,0 +1,117 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/26/2019  12:27:13  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO TIMER0控制8×8LED点阵屏显示数字
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  TIMER0控制8×8LED点阵屏显示数字 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?TEXT1
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0076H     UNIT         ?PR?LED_SCREEN_REFRESH?TEXT1
+            CODE    0902H     0050H     UNIT         ?CO?TEXT1
+            CODE    0952H     0010H     UNIT         ?PR?MAIN?TEXT1
+            CODE    0962H     000AH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   TIMER0控制8×8LED点阵屏显示数字 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?LED_SCREEN_REFRESH?TEXT1
+  +--> ?CO?TEXT1
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+
+
+SYMBOL TABLE OF MODULE:  TIMER0控制8×8LED点阵屏显示数字 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/26/2019  12:27:13  PAGE 2
+
+
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0902H         PUBLIC        DotMatrix
+  C:0952H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  D:008CH         PUBLIC        TH0
+  C:088CH         PUBLIC        LED_Screen_Refresh
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  -------         PROC          MAIN
+  C:0952H         LINE#         29
+  C:0952H         LINE#         30
+  C:0952H         LINE#         31
+  C:0955H         LINE#         32
+  C:0958H         LINE#         33
+  C:095BH         LINE#         34
+  C:095DH         LINE#         35
+  C:0960H         LINE#         36
+  -------         ENDPROC       MAIN
+  -------         PROC          LED_SCREEN_REFRESH
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:0009H         SYMBOL        Num_Idx
+  D:000AH         SYMBOL        t
+  -------         ENDDO         
+  C:088CH         LINE#         42
+  C:089DH         LINE#         45
+  C:08A0H         LINE#         46
+  C:08A3H         LINE#         47
+  C:08A6H         LINE#         48
+  C:08B5H         LINE#         49
+  C:08D5H         LINE#         50
+  C:08DCH         LINE#         51
+  C:08DFH         LINE#         52
+  C:08E6H         LINE#         53
+  C:08E6H         LINE#         54
+  C:08E9H         LINE#         55
+  C:08F0H         LINE#         56
+  C:08F3H         LINE#         57
+  C:08F3H         LINE#         58
+  -------         ENDPROC       LED_SCREEN_REFRESH
+  -------         ENDMOD        TEXT1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00E2H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=370
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

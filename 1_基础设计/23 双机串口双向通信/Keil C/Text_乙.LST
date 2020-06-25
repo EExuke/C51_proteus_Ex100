@@ -1,0 +1,99 @@
+C51 COMPILER V9.02   TEXT___                                                               02/07/2020 18:46:31 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE TEXT___
+OBJECT MODULE PLACED IN Text_乙.OBJ
+COMPILER INVOKED BY: C:\Users\99702\Documents\keil\C51\BIN\C51.EXE Text_乙.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //-----------------------------------------------------------------
+   2          //      名称: 乙机程序接收甲机发送的字符并完成相应动作
+   3          //-----------------------------------------------------------------
+   4          //      说明: 乙机接收到甲机发送的信号后,根据相应信号控制完成不同的
+   5          //                      LED点亮动作.
+   6          //-----------------------------------------------------------------
+   7          #include <reg51.h>
+   8          #include <intrins.h>
+   9          #define INT8U   unsigned char
+  10          #define INT16U unsigned int
+  11          sbit LED1 = P1^0;
+  12          sbit LED2 = P1^3;
+  13          sbit K1 = P1^7;
+  14          INT8U NumX = 0xFF;
+  15          //-----------------------------------------------------------------
+  16          // 延时函数      
+  17          //-----------------------------------------------------------------
+  18          void delay_ms(INT16U x) {INT8U t; while(x--) for(t = 0; t<120; t++);}
+  19          //-----------------------------------------------------------------
+  20          // 主程序 
+  21          //-----------------------------------------------------------------
+  22          void main()
+  23          {
+  24   1              LED1 = LED2 = 1;                //关闭LED
+  25   1              SCON = 0x50;                    //串口模式1，8位异步，允许接收
+  26   1              TMOD = 0x20;                    //T1工作在模式2，8位自动装载
+  27   1              TH1 = 0xFD;                             //设置波特率9600 b/s
+  28   1              TL1 = 0xFD;
+  29   1              PCON = 0x00;                    //波特率不倍增
+  30   1              TI = RI = 0;                    //发送与接收中断标志位软件清零
+  31   1              TR1 = 1;                                //启动定时器T1
+  32   1              IE = 0x90;                              //允许串口中断
+  33   1              while(1)
+  34   1              {
+  35   2                      if (K1 == 0)
+  36   2                      {
+  37   3                              delay_ms(10);
+  38   3                              if (K1 == 0)
+  39   3                                      while(K1 == 0);
+  40   3                              else
+  41   3                                      continue;
+  42   3                              if (++NumX == 11)               //NumX=0~10，10表示关闭
+  43   3                                      NumX = 0;
+  44   3                              SBUF = NumX;                    //串口发送
+  45   3                              while(TI == 0);                 //等待发送结束
+  46   3                              TI = 0;                                 //清除接收中断标志位
+  47   3                      }
+  48   2              }
+  49   1      }
+  50          
+  51          //-----------------------------------------------------------------
+  52          // 乙机串口接收中断函数 
+  53          //-----------------------------------------------------------------
+  54          void Serial_INT() interrupt 4 
+  55          {
+C51 COMPILER V9.02   TEXT___                                                               02/07/2020 18:46:31 PAGE 2   
+
+  56   1              if (RI)                                                 //如果接收到命令字符则完成不同的LED点亮动作
+  57   1              {
+  58   2                      RI = 0;                                                 //软件清除接收中断标志位
+  59   2                      switch (SBUF)
+  60   2                      {
+  61   3                              case 'X':
+  62   3                                      LED1 = 1; LED2 = 1;             //全灭
+  63   3                                      break;
+  64   3                              case 'A':
+  65   3                                      LED1 = 0; LED2 = 1;             //LED1点亮
+  66   3                                      break;
+  67   3                              case 'B':
+  68   3                                      LED1 = 1; LED2 = 0;             //LED2点亮
+  69   3                                      break;
+  70   3                              case 'C':
+  71   3                                      LED1 = 0; LED2 = 0;             //全亮
+  72   3                      }
+  73   2              }
+  74   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    146    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

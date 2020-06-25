@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\99702\Desktop\C51+proteus仿真100例\[练习]单片机C实训100例—基于8051+Proteus仿真\第 02 篇 硬件应用\03 串并转换器74HC164驱动多只数码管显示\Keil_模拟时序\模拟时序控制串并转换器74HC164驱动多只数码管显示.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Text1.c...
+linking...
+Program Size: data=40.0 xdata=0 code=439
+creating hex file from "模拟时序控制串并转换器74HC164驱动多只数码管显示"...
+"模拟时序控制串并转换器74HC164驱动多只数码管显示" - 0 Error(s), 0 Warning(s).

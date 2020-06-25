@@ -1,0 +1,167 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/30/2020  20:39:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\USERS\99702\DOCUMENTS\KEIL\C51\BIN\BL51.EXE Text1.obj TO 按键控制定时器选播多段音乐
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Text1.obj (TEXT1)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\USERS\99702\DOCUMENTS\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  按键控制定时器选播多段音乐 (TEXT1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?TEXT1
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     0154H     UNIT         ?CO?TEXT1
+            CODE    0954H     008CH     UNIT         ?C_C51STARTUP
+            CODE    09E0H     0072H     UNIT         ?PR?MAIN?TEXT1
+            CODE    0A52H     0048H     UNIT         ?PR?T0_INT?TEXT1
+            CODE    0A9AH     0028H     UNIT         ?PR?EX0_INT?TEXT1
+            CODE    0AC2H     0016H     UNIT         ?PR?_DELAY_MS?TEXT1
+            CODE    0AD8H     0012H     UNIT         ?C?LIB_CODE
+            CODE    0AEAH     0007H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   按键控制定时器选播多段音乐 (TEXT1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?EX0_INT?TEXT1
+  +--> ?CO?TEXT1
+
+*** NEW ROOT ***************************************************
+
+?PR?T0_INT?TEXT1
+  +--> ?CO?TEXT1
+
+*** NEW ROOT ***************************************************
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/30/2020  20:39:09  PAGE 2
+
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEXT1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEXT1
+  +--> ?CO?TEXT1
+  +--> ?PR?_DELAY_MS?TEXT1
+
+
+
+SYMBOL TABLE OF MODULE:  按键控制定时器选播多段音乐 (TEXT1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEXT1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0828H         PUBLIC        Song
+  D:00B8H         PUBLIC        IP
+  C:0A9AH         PUBLIC        EX0_INT
+  C:08BEH         PUBLIC        Len
+  C:09E0H         PUBLIC        main
+  C:080AH         PUBLIC        HI_LIST
+  D:0089H         PUBLIC        TMOD
+  C:0819H         PUBLIC        LO_LIST
+  D:0008H         PUBLIC        Tone_idx
+  D:0009H         PUBLIC        Song_idx
+  D:008CH         PUBLIC        TH0
+  B:0088H.0       PUBLIC        IT0
+  C:0A52H         PUBLIC        T0_INT
+  D:008AH         PUBLIC        TL0
+  C:0AC2H         PUBLIC        _delay_ms
+  B:0088H.4       PUBLIC        TR0
+  C:0800H         PUBLIC        SEG_CODE
+  B:00B0H.7       PUBLIC        SPK
+  B:0090H.0       PUBLIC        K1
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:0AC2H         LINE#         38
+  C:0AC2H         LINE#         39
+  C:0AC2H         LINE#         40
+  C:0AD7H         LINE#         41
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          MAIN
+  C:09E0H         LINE#         46
+  C:09E0H         LINE#         47
+  C:09E0H         LINE#         48
+  C:09E3H         LINE#         49
+  C:09E6H         LINE#         50
+  C:09E9H         LINE#         51
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/30/2020  20:39:09  PAGE 3
+
+
+  C:09EBH         LINE#         52
+  C:09EEH         LINE#         53
+  C:09EEH         LINE#         54
+  C:09EEH         LINE#         55
+  C:09F1H         LINE#         56
+  C:09F4H         LINE#         57
+  C:09F7H         LINE#         58
+  C:09F9H         LINE#         61
+  C:0A1EH         LINE#         62
+  C:0A1EH         LINE#         64
+  C:0A47H         LINE#         65
+  C:0A49H         LINE#         66
+  C:0A4BH         LINE#         67
+  C:0A4DH         LINE#         68
+  -------         ENDPROC       MAIN
+  -------         PROC          EX0_INT
+  C:0A9AH         LINE#         75
+  C:0AA2H         LINE#         77
+  C:0AA4H         LINE#         78
+  C:0AABH         LINE#         79
+  C:0AAEH         LINE#         80
+  C:0AB1H         LINE#         81
+  C:0AB9H         LINE#         82
+  -------         ENDPROC       EX0_INT
+  -------         PROC          T0_INT
+  C:0A52H         LINE#         88
+  C:0A61H         LINE#         90
+  C:0A63H         LINE#         91
+  C:0A86H         LINE#         92
+  C:0A8DH         LINE#         93
+  -------         ENDPROC       T0_INT
+  -------         ENDMOD        TEXT1
+
+  -------         MODULE        ?C?IMUL
+  C:0AD8H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0258H BYTE (29%) *
+******************************************************************************
+
+Program Size: data=11.0 xdata=0 code=762
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
