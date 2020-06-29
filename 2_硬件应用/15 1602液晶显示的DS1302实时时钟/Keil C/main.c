@@ -46,11 +46,20 @@ void main()
 {
 	Initialize_LCD();		//“∫æß≥ı ºªØ
 	while(1)
-	{	
-
-
-
-
-
+	{
+		GetDateTime();
+		//year,month,day
+		Format_DateTime(DateTime[6], LCD_BUF_1 + 5);
+		Format_DateTime(DateTime[4], LCD_BUF_1 + 8);
+		Format_DateTime(DateTime[3], LCD_BUF_1 + 11);
+		//week
+		strcpy(LCD_BUF_1 + 13, WEEK[DateTime[5] -1]);
+		//hour,min,sec
+		Format_DateTime(DateTime[2], LCD_BUF_1 + 5);
+		Format_DateTime(DateTime[1], LCD_BUF_1 + 8);
+		Format_DateTime(DateTime[0], LCD_BUF_1 + 11);
+		//show time
+		LCD_ShowString(0, 0, LCD_BUF_1);
+		LCD_ShowString(1, 0, LCD_BUF_2);
 	}
 }

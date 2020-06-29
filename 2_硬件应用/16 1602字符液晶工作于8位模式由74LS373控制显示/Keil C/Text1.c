@@ -39,7 +39,12 @@ void delay_ms(INT16U x)
 //-----------------------------------------------------------------
 void Busy_Wait()
 {
-
+	INT8U LCD_Status;
+	do
+	{
+		LCD_Status = XBYTE[LCD_BUSY_RD];
+	} while (LCD_Status & 0x80);
+	
 }
 
 //-----------------------------------------------------------------
@@ -47,7 +52,8 @@ void Busy_Wait()
 //-----------------------------------------------------------------
 void Write_LCD_Command(INT8U cmd)
 {
-
+	XBYTE[LCD_CMD_WR] = cmd;
+	Busy_Wait();
 }
 
 //-----------------------------------------------------------------
@@ -55,7 +61,8 @@ void Write_LCD_Command(INT8U cmd)
 //-----------------------------------------------------------------
 void Write_LCD_Data(INT8U dat)
 {
-
+	XBYTE[LCD_DATA_WR] = dat;
+	Busy_Wait();
 }
 
 
@@ -87,9 +94,18 @@ void main()
 	INT8U i;
 	LCD_Initialise();					//LCD≥ı ºªØ
 	while(1)
-	{	
-
-
-
+	{
+		//line 1
+		for (i = 0; i <= strlen(s1) - 16; i++)
+		{
+			LCD_Show_String(0, 0, s1+i);
+			delay_ms(20);
+		}
+		//line 2
+		for (i = 0; i <= strlen(s2) - 16; i++)
+		{
+			LCD_Show_String(1, 0, s2+i);
+			delay_ms(100);
+		}
 	}
 }

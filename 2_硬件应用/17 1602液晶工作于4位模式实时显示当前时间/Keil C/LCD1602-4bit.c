@@ -18,8 +18,11 @@ void LCD_Busy_Wait()
 {
 	INT8U Hi,Lo ;
 	do
-	{	
-
+	{
+		LCD_PORT |= 0xF0;
+		RS = 0; RW = 1;
+		EN = 1; delay5us(); Hi = LCD_PORT; delay5us(); EN = 0; delay5us();
+		EN = 1; delay5us(); Lo = LCD_PORT; delay5us(); EN = 0; delay5us();
 	} while( Hi & 0x80);
 }
 
@@ -28,8 +31,11 @@ void LCD_Busy_Wait()
 //-----------------------------------------------------------------
 void Write_LCD_Command(INT8U cmd)
 {
-
-
+	LCD_Busy_Wait();
+	LCD_PORT = cmd & 0xF0 | 0x04;
+	delay5us(); EN = 0; delay5us();
+	LCD_PORT = cmd << 4 | 0x04;
+	delay5us(); EN = 0; delay5us();
 }
 
 //-----------------------------------------------------------------
@@ -37,9 +43,12 @@ void Write_LCD_Command(INT8U cmd)
 //-----------------------------------------------------------------
 void Write_LCD_Data(INT8U dat)
 {
-
-
-} 
+	LCD_Busy_Wait();
+	LCD_PORT = dat & 0xF0 | 0x05;
+	delay5us(); EN = 0; delay5us();
+	LCD_PORT = dat << 4 | 0x05;
+	delay5us(); EN = 0; delay5us();
+}
 
 //-----------------------------------------------------------------
 // Òº¾§³õÊ¼»¯
@@ -62,6 +71,13 @@ void Initialize_LCD()
 //-----------------------------------------------------------------
 void LCD_ShowString(INT8U r, INT8U c,char *str)
 {
-
-
+	INT8U i = 0;
+	code INT8U DDRAM[] = {0x80, 0xC0};
+	Write_LCD_Command(DDRAM[r] | c);
+	for (i = 0; i < 16 && str[i] != '\0'; i++)
+	{
+		Write_LCD_Data(str[i]);
+	}
+	
 }
+
