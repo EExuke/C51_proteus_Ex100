@@ -115,13 +115,14 @@ void Write_DS(INT8U item,INT8U dat)
 //-----------------------------------------------------------------
 void Get_DateTime()
 {
-
-
-
-
-
-
-
+	DateTime[0] = Read_DS(SECOND);    //취
+	DateTime[1] = Read_DS(MINUTE);    //취
+	DateTime[2] = Read_DS(HOUR);    //취
+	DateTime[3] = Read_DS(DAY);    //취
+	DateTime[4] = Read_DS(MONTH);    //취
+	DateTime[5] = Read_DS(YEAR);    //취
+	DateTime[6] = Read_DS(CENTURY);    //취
+	DateTime[7] = Read_DS(WEEKDAY);    //취
 }
 
 //-----------------------------------------------------------------

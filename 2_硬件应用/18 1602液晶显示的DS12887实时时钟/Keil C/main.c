@@ -44,7 +44,10 @@ void delay_ms(INT16U x)
 //-----------------------------------------------------------------
 void Busy_Wait()
 {
-
+	INT8U LCD_Status;
+	do {
+		LCD_Status = XBYTE[LCD_BUSY_RD];
+	} while (LCD_Status);
 }
 
 //-----------------------------------------------------------------
@@ -52,7 +55,8 @@ void Busy_Wait()
 //-----------------------------------------------------------------
 void Write_LCD_Command(INT8U cmd)
 {
-
+	XBYTE[LCD_CMD_WR] = cmd;
+	Busy_Wait();
 }
 
 //-----------------------------------------------------------------
@@ -60,7 +64,8 @@ void Write_LCD_Command(INT8U cmd)
 //-----------------------------------------------------------------
 void Write_LCD_Data(INT8U dat)
 {
-
+	XBYTE[LCD_DATA_WR] = dat;
+	Busy_Wait();
 }
 
 //-----------------------------------------------------------------
@@ -80,15 +85,17 @@ void LCD_ShowString(INT8U r, INT8U c, char *s)
 //-----------------------------------------------------------------
 void LCD_Initialise()
 {
-
+	Write_LCD_Command(0x38);
+	Write_LCD_Command(0x0C);
 }
 
 //-----------------------------------------------------------------
 // 日期与时间值转换为数字字符(BCD->DEC)
 //-----------------------------------------------------------------
 void Format_DateTime(INT8U d, INT8U *a)
-{ 
-
+{
+	*a = (d >> 4) + '0';
+	*(a+1) = (d & 0x0F) + '0';
 }
 
 //-----------------------------------------------------------------
@@ -101,10 +108,28 @@ void main()
 	LCD_ShowString(0,0,"DS12887 Real Clock");
 	while(1)
 	{
+		Get_DateTime();
 
+		Format_DateTime(DateTime[6], buf1 + 6);
+		Format_DateTime(DateTime[5], buf1 + 8);
+		Format_DateTime(DateTime[4], buf1 + 11);
+		Format_DateTime(DateTime[3], buf1 + 14);
+		LCD_ShowString(1, 0, buf1);
 
+		Format_DateTime(DateTime[2] & 0x7F, buf2 + 6);
+		Format_DateTime(DateTime[1], buf2 + 9);
+		Format_DateTime(DateTime[0], buf2 + 12);
 
+		if (DateTime[2] & 0x80) {
+			buf2[15] = 'P';
+		} else {
+			buf2[15] = 'A';
+		}
+		LCD_ShowString(2, 0, buf2);
 
-
+		strcpy(buf3 + 6, WEEK[DateTime[7] - 1]);
+		LCD_ShowString(3, 0, buf3);
+		delay_ms(50);
 	}
 }
+
