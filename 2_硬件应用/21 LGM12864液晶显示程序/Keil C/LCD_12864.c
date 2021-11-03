@@ -9,6 +9,7 @@
 #define LCD_START_ROW	0xC0		//起始行
 #define LCD_PAGE		0xB8		//页指令
 #define LCD_COL			0x40		//列指令
+
 //液晶引脚定义
 sbit	DI  = P3^0 ;				//数据/命令选择线
 sbit	RW  = P3^1 ;				//读/写控制线
@@ -21,10 +22,10 @@ sbit	RST = P3^5 ;				//复位
 //-----------------------------------------------------------------
 void LCD_Busy_Wait()
 {
-	do
-	{	
-
-
+	do {
+		LCD_DB_PORT = 0xff;
+		RW = 1; _nop_(); DI = 0; //设置为读，选择状态寄存器
+		E = 1; _nop_op_(); E = 0; //E置高电平读取，随后置为低电平
 	} while (P0 & 0x80);
 }
 
@@ -33,7 +34,11 @@ void LCD_Busy_Wait()
 //-----------------------------------------------------------------
 void LCD_Write_Command( INT8U c)
 {
-
+	LCD_Busy_Wait();
+	LCD_DB_PORT = 0xff;
+	RW = 0; _nop_(); DI = 0;
+	LCD_DB_PORT = c;
+	E = 1; _nop_(); E = 0;
 }
 
 //-----------------------------------------------------------------
@@ -41,7 +46,11 @@ void LCD_Write_Command( INT8U c)
 //-----------------------------------------------------------------
 void LCD_Write_Data(INT8U d )
 {
-
+	LCD_Busy_Wait();
+	LCD_DB_PORT = 0xff;
+	RW = 0; _nop_(); DI = 1; //设置为写， 选择数据寄存器
+	LCD_DB_PORT = d;
+	E = 1; _nop_(); E = 0;
 }
 
 //-----------------------------------------------------------------
@@ -49,7 +58,9 @@ void LCD_Write_Data(INT8U d )
 //-----------------------------------------------------------------
 void LCD_Initialize()
 {
-
+	CS1 = 1; CS2 = 1;                 //左半屏片选
+	LCD_Write_Command(0x3f);          //显示开
+	LCD_Write_Command(LCD_START_ROW); //设置起始行
 }
 
 //-----------------------------------------------------------------
@@ -63,9 +74,34 @@ void LCD_Initialize()
 //-----------------------------------------------------------------
 void Common_Show(INT8U P,INT8U L,INT8U W,INT8U *r)
 {
-
-
-
+	INT8U i;
+	if (L < 64) {
+		CS1 = 1; CS2 = 0;       //左半屏
+		LCD_Write_Command(LCD_PAGE + P);
+		LCD_Write_Command(LCD_COL + L);
+		if (L + W < 64) {
+			for (i=0; i<W; i++) {
+				LCD_Write_Data(r[i]);
+			}
+		} else {
+			for (i=0; i<64-L; i++) {
+				LCD_Write_Data(r[i]);
+			}
+			CS1 = 0; CS2 = 1;    //右半屏
+			LCD_Write_Command(LCD_PAGE + P);
+			LCD_Write_Command(LCD_COL);
+			for (i=64-L; i<W; i++) {
+				LCD_Write_Data(r[i]);
+			}
+		}
+	} else {
+		CS1 = 0; CS2 = 1;    //右半屏
+		LCD_Write_Command(LCD_PAGE + P);
+		LCD_Write_Command(LCD_COL + L - 64);
+		for (i=64-L; i<W; i++) {
+			LCD_Write_Data(r[i]);
+		}
+	}
 }
 
 //-----------------------------------------------------------------
@@ -81,7 +117,8 @@ void Common_Show(INT8U P,INT8U L,INT8U W,INT8U *r)
 //-----------------------------------------------------------------
 void Display_A_WORD(INT8U P,INT8U L,INT8U *M)
 {
-
+	Common_Show( P, L, 16, M );    //汉字上半部分
+	Common_Show( P+1, L, 16, M+16); //下半部分
 }
 
 //-----------------------------------------------------------------
@@ -89,7 +126,10 @@ void Display_A_WORD(INT8U P,INT8U L,INT8U *M)
 //-----------------------------------------------------------------
 void Display_A_WORD_String(INT8U P,INT8U L,INT8U C,INT8U *M)
 {
-
+	INT8U i;
+	for (i=0; i<C; i++) {
+		Display_A_WORD(P, L+i*16, M+i*32);
+	}
 }
 
 //-----------------------------------------------------------------
@@ -98,6 +138,8 @@ void Display_A_WORD_String(INT8U P,INT8U L,INT8U C,INT8U *M)
 //-----------------------------------------------------------------
 void Display_Image(INT8U P,INT8U L,INT8U W,INT8U H,INT8U * G)
 {
-
-
+	INT8U i;
+	for (i=0; i<H; i++) {
+		Common_Show(P+i, L, W, G+i*W);
+	}
 }
